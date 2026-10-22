@@ -1,5 +1,6 @@
 import type { ThemeId } from '../../app/themes';
 import { playSfx } from '../../app/sound';
+import { animatedLogo } from '../components/animatedLogo';
 import { button } from '../components/controls';
 import { imageUrl } from '../assets';
 import { h } from '../dom';
@@ -36,7 +37,7 @@ export function renderMapSelect(nav: Navigation): HTMLElement {
   return h(
     'main',
     { class: 'screen centered-screen' },
-    h('img', { class: 'select-title', src: imageUrl('title-select'), alt: t.mapSelect.title, draggable: false }),
+    animatedLogo({ video: 'elige', fallback: imageUrl('title-select'), alt: t.mapSelect.title, className: 'select-title' }),
     h('div', { class: 'map-grid' }, ...cards),
     button(t.mapSelect.back, nav.toMenu),
   );

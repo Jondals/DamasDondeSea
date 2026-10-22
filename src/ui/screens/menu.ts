@@ -1,4 +1,5 @@
 import { readSave } from '../../app/saveStorage';
+import { animatedLogo } from '../components/animatedLogo';
 import { button, iconButton } from '../components/controls';
 import { imageUrl } from '../assets';
 import { h } from '../dom';
@@ -12,7 +13,7 @@ export function renderMenu(nav: Navigation): HTMLElement {
     'main',
     { class: 'screen menu-screen' },
     h('div', { class: 'top-bar' }, iconButton(t.menu.settings, 'icon-settings', openSettings), iconButton(t.menu.howToPlay, 'icon-info', nav.toHowToPlay)),
-    h('img', { class: 'title-logo', src: `${import.meta.env.BASE_URL}images/title.svg`, alt: t.appName, draggable: false }),
+    animatedLogo({ video: 'title', fallback: `${import.meta.env.BASE_URL}images/title.svg`, alt: t.appName, className: 'title-logo' }),
     h(
       'nav',
       { class: 'menu-actions', 'aria-label': t.appName },

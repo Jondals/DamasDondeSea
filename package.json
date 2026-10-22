@@ -1,13 +1,13 @@
 {
   "name": "checkers-anywhere",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "pack:desktop": "npm run build && electron-packager . Checkers --platform=win32 --arch=x64 --out=release --overwrite --prune --ignore=\"^/(src|release|public)\" --ignore=tsconfig.json"
+    "pack:desktop": "npm run build && electron-packager . DamasDondeSea --platform=win32 --arch=x64 --out=release --overwrite --prune --icon=build/icon.ico --app-version=1.0.1 --win32metadata.ProductName=\"Damas Donde Sea\" --win32metadata.FileDescription=\"Damas Donde Sea\" --win32metadata.OriginalFilename=DamasDondeSea.exe --ignore=\"^/(src|release|public)\"  --ignore=tsconfig.json"
   },
   "devDependencies": {
     "@electron/packager": "^20.3.0",
@@ -17,5 +17,6 @@
   },
   "main": "desktop/main.cjs",
   "description": "Damas Donde Sea - Spanish checkers in the browser",
-  "author": "Jondals"
+  "author": "Jondals",
+  "productName": "Damas Donde Sea"
 }
