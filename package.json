@@ -1,0 +1,21 @@
+{
+  "name": "checkers-anywhere",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "pack:desktop": "npm run build && electron-packager . Checkers --platform=win32 --arch=x64 --out=release --overwrite --prune --ignore=\"^/(src|release|public)\" --ignore=tsconfig.json"
+  },
+  "devDependencies": {
+    "@electron/packager": "^20.3.0",
+    "electron": "^45.0.0",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.4"
+  },
+  "main": "desktop/main.cjs",
+  "description": "Damas Donde Sea - Spanish checkers in the browser",
+  "author": "Jondals"
+}
