@@ -1,44 +1,41 @@
+@font-face { font-family: 'Galak'; src: url('/fonts/GalakPro.ttf'); unicode-range: U+0020-007E; font-display: swap; }
+@font-face { font-family: 'Noot'; src: url('/fonts/Noot.otf'); unicode-range: U+0020-007E; font-display: swap; }
+@font-face { font-family: 'Source Code'; src: url('/fonts/SourceCode.otf'); font-display: swap; }
+
 :root {
-  --bg-1: #15122e;
-  --bg-2: #3b1a26;
-  --accent: #ff4d6a;
-  --sq-light: #f1dcc0;
-  --sq-dark: #7c2f35;
-  --frame: #3a1519;
-
-  --text: #f5f3ff;
-  --text-dim: rgba(245, 243, 255, 0.68);
-  --surface: rgba(255, 255, 255, 0.07);
-  --surface-strong: rgba(255, 255, 255, 0.13);
-  --border: rgba(255, 255, 255, 0.14);
-  --radius: 14px;
-  --font: 'Inter', 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
-
+  --accent: #ff4f63;
+  --ink: #000;
+  --text: #fff;
+  --font-ui: 'Galak', 'Segoe UI', system-ui, sans-serif;
+  --font-btn: 'Source Code', ui-monospace, monospace;
+  --font-display: 'Noot', 'Galak', sans-serif;
+  --bg-filter: none;
   color-scheme: dark;
 }
 
 * { box-sizing: border-box; margin: 0; }
-
 html, body, #app { min-height: 100%; }
 
 body {
   min-height: 100dvh;
-  font-family: var(--font);
+  font-family: var(--font-ui);
   color: var(--text);
-  background:
-    radial-gradient(1200px 700px at 50% -10%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%),
-    linear-gradient(160deg, var(--bg-1), var(--bg-2));
-  background-attachment: fixed;
+  background: #14122b;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  font-variant-ligatures: none;
   user-select: none;
 }
 
-button { font: inherit; color: inherit; }
-img { max-width: 100%; display: block; }
-
-:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-
-@media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
+/* The original background art; each map only tints it. */
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: -1;
+  background: url('/images/bg-menu.webp') center / cover no-repeat;
+  filter: var(--bg-filter);
+  transition: filter 0.4s ease;
 }
+
+button { font: inherit; color: inherit; }
+img { max-width: 100%; display: block; -webkit-user-drag: none; }
+:focus-visible { outline: 3px solid #ffe14d; outline-offset: 3px; border-radius: 12px; }
+
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }

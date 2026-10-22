@@ -27,7 +27,7 @@ export function renderGame(session: Session, nav: Navigation): Screen {
   const hintLine = h('p', { class: 'hint-line', role: 'status', 'aria-live': 'polite' });
   const scoreCard = h('div', { class: 'card score-card' });
   const modeSlot = h('div', {});
-  const undoButton = button(t.game.undo, () => session.undo());
+  const undoButton = button(t.game.undo, () => session.undo(), { small: true });
   let announcedWinner = false;
 
   const paintBoard = () => {
@@ -125,12 +125,12 @@ export function renderGame(session: Session, nav: Navigation): Screen {
     if (announcedWinner) return;
     announcedWinner = true;
     const modal = openModal(winnerText(), [
-      h('div', { class: 'modal-body result' }, h('h2', {}, winnerText())),
+      h('div', { class: 'result' }, h('h2', {}, winnerText())),
       h(
         'footer',
         { class: 'modal-footer' },
-        button(t.game.over.toMenu, () => { modal.close(); nav.toMenu(); }, { variant: 'ghost' }),
-        button(t.game.over.newGame, () => { modal.close(); session.restart(); }, { variant: 'primary' }),
+        button(t.game.over.toMenu, () => { modal.close(); nav.toMenu(); }, { small: true }),
+        button(t.game.over.newGame, () => { modal.close(); session.restart(); }),
       ),
     ]);
   };
@@ -160,11 +160,11 @@ export function renderGame(session: Session, nav: Navigation): Screen {
         'div',
         { class: 'action-grid' },
         undoButton,
-        button(t.game.restart, () => session.restart()),
-        button(t.game.save, () => session.save()),
-        button(t.game.settings, openSettings),
+        button(t.game.restart, () => session.restart(), { small: true }),
+        button(t.game.save, () => session.save(), { small: true }),
+        button(t.game.settings, openSettings, { small: true }),
       ),
-      button(t.game.menu, nav.toMenu, { variant: 'ghost' }),
+      button(t.game.menu, nav.toMenu),
     ),
   );
 

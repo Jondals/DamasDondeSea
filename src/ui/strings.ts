@@ -3,7 +3,7 @@ export const t = {
   appName: 'Damas Donde Sea',
   menu: {
     play: 'Jugar',
-    continue: 'Continuar partida',
+    load: 'Cargar',
     noSave: 'No hay ninguna partida guardada',
     settings: 'Opciones',
     howToPlay: 'Cómo jugar',
@@ -12,9 +12,9 @@ export const t = {
     title: 'Elige un tablero',
     back: 'Volver',
     maps: {
-      forest: { name: 'Bosque', description: 'Verdes tranquilos y madera clara' },
-      lake: { name: 'Lago', description: 'Azules fríos y agua en calma' },
-      mountain: { name: 'Montaña', description: 'Piedra gris y tonos cálidos' },
+      forest: { name: 'El bosque', description: 'Verdes tranquilos y madera clara' },
+      lake: { name: 'El lago', description: 'Azules fríos y agua en calma' },
+      mountain: { name: 'La nieve', description: 'Hielo y calma' },
     },
   },
   game: {
@@ -48,7 +48,7 @@ export const t = {
       youWin: '¡Has ganado!',
       cpuWins: 'Ha ganado la CPU',
       newGame: 'Nueva partida',
-      toMenu: 'Volver al menú',
+      toMenu: 'Menú',
     },
   },
   settings: {
@@ -68,15 +68,14 @@ export const t = {
     display: 'Pantalla',
     fullscreen: 'Pantalla completa',
     reset: 'Restablecer opciones',
-    close: 'Cerrar',
+    close: 'Volver',
   },
   howTo: {
-    title: 'Cómo jugar',
-    sections: [
-      { heading: 'Objetivo', body: 'Captura todas las fichas del rival o déjalo sin movimientos posibles.' },
-      { heading: 'Movimiento', body: 'Las fichas se mueven una casilla en diagonal hacia delante, siempre sobre casillas oscuras. Las rojas empiezan.' },
-      { heading: 'Capturas', body: 'Saltas sobre una ficha rival colocada en diagonal si la casilla de detrás está libre. Capturar es obligatorio, y si puedes seguir saltando debes hacerlo con la misma ficha. Las fichas solo capturan hacia delante.' },
-      { heading: 'Damas', body: 'Al llegar a la última fila tu ficha se corona. La dama se mueve y captura en diagonal a cualquier distancia, hacia delante y hacia atrás. Coronar termina tu turno.' },
+    title: 'Cómo se juega',
+    extraTitle: 'Reglas completas',
+    extra: [
+      { heading: 'Capturas', body: 'Saltas sobre una ficha rival en diagonal si la casilla de detrás está libre. Capturar es obligatorio y, si puedes seguir saltando, debes hacerlo con la misma ficha. Las fichas solo capturan hacia delante.' },
+      { heading: 'Damas', body: 'Al llegar a la última fila tu ficha se corona. Coronar termina tu turno.' },
       { heading: 'Tablas', body: 'Si pasan 40 jugadas seguidas de damas sin capturas ni movimientos de fichas, la partida termina en tablas.' },
     ],
     back: 'Volver',

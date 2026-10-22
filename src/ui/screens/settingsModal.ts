@@ -11,7 +11,7 @@ function setFullscreen(on: boolean) {
 }
 
 export function openSettings() {
-  const modal = openModal(t.settings.title, []);
+  const modal = openModal(t.settings.title, [], { className: 'panel-modal' });
   const { dialog } = modal;
 
   const render = () => {
@@ -20,10 +20,9 @@ export function openSettings() {
       h('section', { class: 'settings-section' }, h('h3', {}, title), ...rows);
 
     dialog.replaceChildren(
-      h('header', { class: 'modal-header' }, h('h2', {}, t.settings.title)),
       h(
         'div',
-        { class: 'modal-body' },
+        { class: 'panel-content' },
         section(
           t.settings.audio,
           toggle(t.settings.music, s.musicEnabled, (v) => { updateSettings({ musicEnabled: v }); render(); }),
@@ -51,8 +50,8 @@ export function openSettings() {
       h(
         'footer',
         { class: 'modal-footer' },
-        button(t.settings.reset, () => { resetSettings(); render(); }, { variant: 'ghost' }),
-        button(t.settings.close, modal.close, { variant: 'primary' }),
+        button(t.settings.reset, () => { resetSettings(); render(); }, { quiet: true }),
+        button(t.settings.close, modal.close, { small: true }),
       ),
     );
   };

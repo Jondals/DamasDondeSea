@@ -1,21 +1,22 @@
 import { playSfx } from '../../app/sound';
-import { h, type Child } from '../dom';
+import { imageUrl } from '../assets';
+import { h } from '../dom';
 
 interface ButtonOptions {
-  variant?: 'primary' | 'secondary' | 'ghost';
+  small?: boolean;
+  quiet?: boolean;
   disabled?: boolean;
   title?: string;
-  icon?: Child;
-  class?: string;
 }
 
+/** Comic-style button made from the original button art. */
 export function button(label: string, onClick: () => void, options: ButtonOptions = {}): HTMLButtonElement {
-  const { variant = 'secondary', disabled, title, icon, class: extra } = options;
+  const { small, quiet, disabled, title } = options;
   return h(
     'button',
     {
       type: 'button',
-      class: `btn btn-${variant} ${extra ?? ''}`.trim(),
+      class: `btn ${small ? 'btn-small' : ''} ${quiet ? 'btn-quiet' : ''}`.trim(),
       disabled,
       title,
       onClick: () => {
@@ -23,13 +24,20 @@ export function button(label: string, onClick: () => void, options: ButtonOption
         onClick();
       },
     },
-    icon,
-    h('span', {}, label),
+    quiet ? null : h('img', { class: 'btn-img', src: imageUrl('button'), alt: '', draggable: false }),
+    quiet ? null : h('img', { class: 'btn-img btn-img-hover', src: imageUrl('button-hover'), alt: '', draggable: false }),
+    h('span', { class: 'btn-label' }, label),
   );
 }
 
-export function iconButton(label: string, icon: Child, onClick: () => void): HTMLButtonElement {
-  return h('button', { type: 'button', class: 'icon-btn', 'aria-label': label, title: label, onClick }, icon);
+/** Square icon button with a hover image (settings / info). */
+export function iconButton(label: string, image: string, onClick: () => void): HTMLButtonElement {
+  return h(
+    'button',
+    { type: 'button', class: 'icon-btn', 'aria-label': label, title: label, onClick: () => { playSfx('click'); onClick(); } },
+    h('img', { class: 'btn-img', src: imageUrl(image), alt: '', draggable: false }),
+    h('img', { class: 'btn-img btn-img-hover', src: imageUrl(`${image}-hover`), alt: '', draggable: false }),
+  );
 }
 
 export function toggle(label: string, checked: boolean, onChange: (value: boolean) => void): HTMLLabelElement {
